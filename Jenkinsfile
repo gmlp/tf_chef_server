@@ -24,8 +24,8 @@ pipeline {
             env.BRANCH_NAME ==~ /PR.*/ || env.BRANCH_NAME ==~ /feat.*/ }
       }
       steps {
-        verifyInfra terraformdir'.' path:'examples/global'
-        verifyInfra terraformdir'.' path:'examples/chef_server'
+        verifyInfra terraformDir:'.', path:'examples/global'
+        verifyInfra terraformDir:'.', path:'examples/chef_server'
 
       }
     }
