@@ -1,0 +1,6 @@
+.terraform/
+*tfstate*
+plan
+.vscode
+.gradle
+Dockerfiles/jenkins-custom
