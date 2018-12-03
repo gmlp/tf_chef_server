@@ -35,13 +35,11 @@ pipeline {
           env.BRANCH_NAME ==~ /PR.*/ }
       }
       steps {
-        computeInfra('examples/global')
-        computeInfra('examples/ci_server')
-        computeInfra('examples/stack_deployer')
+        computeInfra 'examples/global', '.'
+        computeInfra 'examples/chef_server', '.'
         input(message: "Do you want to apply those plans?", ok: "yes")
-        applyChangesInfra('examples/global')
-        applyChangesInfra('examples/ci_server')
-        applyChangesInfra('examples/stack_deployer')
+        applyChangesInfra 'examples/global', '.'
+        applyChangesInfra 'examples/chef_server', '.'
       }
     }
     stage('destroy') {
@@ -51,9 +49,8 @@ pipeline {
       }
       steps {
         input(message: "Do you want to destroy everything?", ok: "yes")
-        destroyInfra('examples/global')
-        destroyInfra('examples/ci_server')
-        destroyInfra('examples/stack_deployer')
+        destroyInfra 'examples/global', '.'
+        destroyInfra 'examples/chef_server', '.'
       }
     }
   }
