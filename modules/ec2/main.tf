@@ -17,7 +17,7 @@ resource "aws_instance" "ec2" {
   ami                  = "${data.aws_ami.ubuntu.id}"
   instance_type        = "${var.instance_type}"
   iam_instance_profile = "${var.instance_profile_name}"
-  user_data            = "${file("${path.module}/install.sh")}"
+  user_data            = "${file("${path.module}/install.sh")}" 
   availability_zone    = "${var.availability_zone}"
 
   tags = "${merge(var.tags,
